@@ -1,15 +1,15 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.edge.service import Service
 from time import sleep
 import random
 from selenium.common.exceptions import NoSuchElementException
 
 
-chromedriver_path = r'C:\eclipse\chromedriver.exe'
-webdriver = webdriver.Chrome(executable_path=chromedriver_path)
-sleep(1)
+edgedriver_path = Service('D:\edgedriver_win64\msedgedriver.exe')
+webdriver = webdriver.Edge(service=edgedriver_path)
 webdriver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
-sleep(2)
+sleep(10)
 
 commentsDict = [ "<3","<3"]
 

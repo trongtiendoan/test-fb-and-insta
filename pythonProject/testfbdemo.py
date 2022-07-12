@@ -1,8 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-import time
-import pydirectinput
-from pynput.keyboard import Key, Controller
+from selenium.webdriver.edge.service import Service
+from time import sleep
+# import pydirectinput
+# from pynput.keyboard import Key, Controller
 import pyautogui
 option = Options()
 
@@ -15,26 +16,29 @@ option.add_experimental_option("prefs", {
     "profile.default_content_setting_values.notifications": 1
 })
 
-driver = webdriver.Chrome(chrome_options=option, executable_path="C:\eclipse\chromedriver.exe")
-driver.get("https://www.facebook.com")
-username = driver.find_element_by_xpath("//*[@id='email']")
+edgedriver_path = Service('D:\edgedriver_win64\msedgedriver.exe')
+webdriver = webdriver.Edge(service=edgedriver_path)
+webdriver.get("https://www.facebook.com")
+sleep(10)
+
+username = webdriver.find_element_by_xpath("//*[@id='email']")
 username.send_keys("karitodragneel2@gmail.com")
-time.sleep(2)
-password = driver.find_element_by_xpath("//*[@id='pass']")
-password.send_keys("anhlakarito123")
-time.sleep(2)
-submit = driver.find_element_by_xpath("//*[@name='login']")
+sleep(2)
+password = webdriver.find_element_by_xpath("//*[@id='pass']")
+password.send_keys("karitodragneel2011")
+sleep(2)
+submit = webdriver.find_element_by_xpath("//*[@name='login']")
 submit.click()
-time.sleep(1)
+sleep(1)
 
-like = driver.find_element_by_xpath("//div[@class = 'tvfksri0 ozuftl9m']//div[@aria-label = 'Thích']")
+like = webdriver.find_element_by_xpath("//div[@class = 'tvfksri0 ozuftl9m']//div[@aria-label = 'Thích']")
 
-time.sleep(2)
+sleep(2)
 pyautogui.FAILSAFE= False
 pyautogui.press('j')
 for i in range(0,7):
     pyautogui.press('j')
-    time.sleep(2)
+    sleep(2)
     like.click()
-    time.sleep(2)
+    sleep(2)
 
